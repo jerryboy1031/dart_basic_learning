@@ -9,6 +9,7 @@ use when
 @@ text in purple (and bold)@@
 ```
 <span style="color:blue">This text is blue</span>
+<font color="blue">This text is blue</font>
 
 ```diff
 - abstract class Vehicle { 
