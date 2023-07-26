@@ -89,3 +89,29 @@ void main() {
 Accessed directly from the class and does not require an instance of the class. Called using the class name
 - Non-static method:
 Associated with instances of the class and requires an instance to be created before it can be called. Called on the instance
+
+
+3. Extends & Super
+   
+We use `extends` to create a subclass, and `super` to refer to the superclass.
+
+**Warning: Extend only can inherit one class!!**
+```diff
+@@ Extends & Super example @@
+```
+
+In this example, `Boy` is subclass and inherits `People` (superclass)  
+```dart
+class People {
+    String name;
+    int age;
+    
+    People(this.name, this.age);
+    String introduce() => "I'm $name. Nice to meet you.";
+}
+
+class Boy extends People { //   `subclass` extend `super class` , only can inherit one class
+    Boy(String name, int age): super(name, age);
+    // we can call boy.introduce() !!(in main)
+}
+```
