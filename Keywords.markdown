@@ -1,4 +1,6 @@
 ### Keywords *(as,final,await,static...)*
+
+# Class modifiers
 ## 1. Abstract
 
 Use when a class that doesn’t require a **full, concrete implementation of its entire interface.** That is, a class that implements an interface must provide actual code for all the methods declared in the interface.
@@ -39,7 +41,90 @@ Vehicle myVehicle = Vehicle();
 
 Abstract class is like the menu, declares the name & type of methods(called abstract method), and lets other class that implements it define and use these methods. Also, it doesn't appear as an initialized object. The detail definition and functionality will in the implement classes.
 
+## 2. Base
+Base modifier guarantees implementation **cannot** be outside of the its own library.
+```diff
+@@ base class @@
+```
+```dart
+// Library a.dart
+base class Vehicle {
+  void moveForward(int meters) {
+    // ...
+  }
+}
+```
+
+- **Can be constructed**
+```dart
+Vehicle myVehicle = Vehicle();
+```
+
+- **Can be inherited (extends)**
+```dart
+class Car extends Vehicle {
+  // ...
+}
+```
+- **Cannot be implemented**
+```dart
+// ERROR
+class MockVehicle implements Vehicle {
+  @override
+  void moveForward(int meters) {
+    // ...
+  }
+}
+```
+
+## 3. Interface
+
+Interface modifier guarantees libraries outside of the interface’s own defining library can implement the interface, but not extend it.
+```diff
+@@ interface class @@
+```
+```dart
+// Library a.dart
+interface class Vehicle {
+  void moveForward(int meters) {
+    // ...
+  }
+}
+```
+
+- **Can be constructed**
+```dart
+Vehicle myVehicle = Vehicle();
+```
+
+- **Cannot be inherited (extends)**
+```dart
+// ERROR
+class Car extends Vehicle {
+  // ...
+}
+```
+- **Can be implemented**
+```dart
+class MockVehicle implements Vehicle {
+  @override
+  void moveForward(int meters) {
+    // ...
+  }
+}
+```
+### abstract interface
+`abstract interface class` 
+
+- Like an interface class, other libraries can implement, but cannot inherit, a pure interface.
+- Like an abstract class, a pure interface can have abstract members.
+
+## 4. Final
+
+## 5. Sealed
+-----------------------------------------
 ## 2. Static
+## 5. Factory
 
 Use when implementing class-wide variables and methods. That is, we can use them without initializing an instance until they’re used.
 ```diff
@@ -89,44 +174,6 @@ void main() {
 Accessed directly from the class and does not require an instance of the class. Called using the class name
 - Non-static method:
 Associated with instances of the class and requires an instance to be created before it can be called. Called on the instance
-
-## 3. Interface
-
-Similar to static class, libraries outside of the interface’s own defining library can implement the interface, but not extend it.
-```diff
-@@ interface class @@
-```
-```dart
-// Library a.dart
-interface class Vehicle {
-  void moveForward(int meters) {
-    // ...
-  }
-}
-```
-
-- **Can be constructed**
-```dart
-Vehicle myVehicle = Vehicle();
-```
-
-- **Cannot be inherited (extends)**
-```dart
-// ERROR
-class Car extends Vehicle {
-  // ...
-}
-```
-- **Can be implemented**
-```dart
-class MockVehicle implements Vehicle {
-  @override
-  void moveForward(int meters) {
-    // ...
-  }
-}
-```
-
 
 ## 3. Extends & Super
    
