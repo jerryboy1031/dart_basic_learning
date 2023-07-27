@@ -90,6 +90,43 @@ Accessed directly from the class and does not require an instance of the class. 
 - Non-static method:
 Associated with instances of the class and requires an instance to be created before it can be called. Called on the instance
 
+## 3. Interface
+
+Similar to static class, libraries outside of the interface’s own defining library can implement the interface, but not extend it.
+```diff
+@@ interface class @@
+```
+```dart
+// Library a.dart
+interface class Vehicle {
+  void moveForward(int meters) {
+    // ...
+  }
+}
+```
+
+- **Can be constructed**
+```dart
+Vehicle myVehicle = Vehicle();
+```
+
+- **Cannot be inherited (extends)**
+```dart
+// ERROR
+class Car extends Vehicle {
+  // ...
+}
+```
+- **Can be implemented**
+```dart
+class MockVehicle implements Vehicle {
+  @override
+  void moveForward(int meters) {
+    // ...
+  }
+}
+```
+
 
 ## 3. Extends & Super
    
