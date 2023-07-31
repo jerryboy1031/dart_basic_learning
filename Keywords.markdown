@@ -245,7 +245,7 @@ Here the generic type parameter on first (<T>) allows you to use the type argume
 - In the type of an argument (List<T>).
 - In the type of a local variable (T tmp).
 
-## 4. Show % hide
+## 4. Show & hide
 
 Using to import only part of the library
 ```diff
@@ -278,4 +278,10 @@ If the expression’s value is true, the assertion succeeds and execution contin
 (2) `<optionalMessage>` : error message.
 
    
-## 6.  
+## 6. Getters & setters
+Using whenever you need more control over a property than a simple field allows.
+```diff
+@@ Getters & setters example @@
+Make sure a property’s value is valid
+```
+
