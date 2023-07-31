@@ -279,9 +279,33 @@ If the expression’s value is true, the assertion succeeds and execution contin
 
    
 ## 6. Getters & setters
-Using whenever you need more control over a property than a simple field allows.
+Using to access and modify the values of private instance variables (fields) of a class
+Getters `get`: retrieve the value of a private instance variable
+Setters `set`: modify the value of a private instance variable
 ```diff
 @@ Getters & setters example @@
-Make sure a property’s value is valid
 ```
+```dart
+class Person {
+  String _name; // Private instance variable
+  Person(this._name); // Constructor
 
+  String get name => _name; // Getter method for _name
+
+  set name(String newName) { Setter method
+    if (newName.isNotEmpty) {
+      _name = newName;
+    }
+  }
+}
+
+void main() {
+  var person = Person("John");
+  person.name = "Jane"; // Using the setter to change the name
+  print(person.name); // Output: Jane
+}
+```
+In this example, we define:
+- a private instance variable _name
+- a getter name to access it
+- a setter name that sets the value of _name after performing a validation check to ensure the new name is not empty.
