@@ -280,8 +280,10 @@ If the expression’s value is true, the assertion succeeds and execution contin
    
 ## 6. Getters & setters
 Using to access and modify the values of private instance variables (fields) of a class
-Getters `get`: retrieve the value of a private instance variable
-Setters `set`: modify the value of a private instance variable
+
+Both are defined in the class's definition (not in main):
+- Getters `get`: retrieve the value of a private instance variable
+- Setters `set`: modify the value of a private instance variable
 ```diff
 @@ Getters & setters example @@
 ```
@@ -291,6 +293,8 @@ class Person {
   Person(this._name); // Constructor
 
   String get name => _name; // Getter method for _name
+  // A computed property.
+  int get count => _name.length;
 
   set name(String newName) { Setter method
     if (newName.isNotEmpty) {
@@ -309,3 +313,5 @@ In this example, we define:
 - a private instance variable _name
 - a getter name to access it
 - a setter name that sets the value of _name after performing a validation check to ensure the new name is not empty.
+
+
