@@ -123,8 +123,35 @@ class MockVehicle implements Vehicle {
 
 ## 5. Sealed
 -----------------------------------------
+
+## . Factory
+Factory constructor can return subtypes or even null.
+```diff
+@@ Factory contructor@@
+```
+```dart
+class Square extends Shape {}
+
+class Circle extends Shape {}
+
+class Shape {
+  Shape();
+
+  factory Shape.fromTypeName(String typeName) {
+    if (typeName == 'square') return Square();
+    if (typeName == 'circle') return Circle();
+
+    throw ArgumentError('Unrecognized $typeName');
+  }
+}
+```
+In this example, both `Square` and `Circle` class are subtype(subclass) of `Shape`. In the constructor(`Shape.fromTypeName`), we check the typename is 'square','circle' or not, and then return the subtype if it is.
+
+### Summary:
+Use keyword `factory` (before constructor) makes the constructor return something, or it will not return anything.
+
 ## 2. Static
-## 5. Factory
+
 
 Use when implementing class-wide variables and methods. That is, we can use them without initializing an instance until they’re used.
 ```diff
